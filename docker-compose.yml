@@ -154,7 +154,38 @@ services:
       - POSTGRES_DB=balade
     volumes:
       - balade_microservice-postgres-vol:/var/lib/postgresql/data  
-   
+
+
+
+  # association:
+    # container_name: association
+    # image: "association"
+    # build: ./association
+    # ports:
+      # - "8084:8084"
+    # environment:
+      # - eureka.client.serviceUrl.defaultZone=http://discovery:8761/eureka/
+      # - SPRING_DATASOURCE_URL=jdbc:mysql://association-mysql:3306/association?useSSL=false
+      # - MYSQL_HOST=association-mysql
+      # - MYSQL_USERNAME=iheb
+      # - MYSQL_PASSWORD=iheb
+      # - MYSQL_DATABASE=association
+    
+    # depends_on:
+      # - association-mysql
+
+  # association-mysql:
+    # container_name: association-mysql_2
+    # image: "mysql:5.6"
+    # environment:
+      # - MYSQL_ROOT_PASSWORD=iheb
+      # - MYSQL_DATABASE=association
+      # - MYSQL_USER=iheb
+      # - MYSQL_PASSWORD=iheb
+    # ports:
+      # - 3310:3306
+    # volumes:
+      # - trottinette-microservice-mysql-vol:/my/own/datadir      
 volumes:
   balade_microservice-postgres-vol:
   trottinette-microservice-mysql-vol:

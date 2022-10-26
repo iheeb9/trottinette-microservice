@@ -22,23 +22,20 @@ public class GatewayMicroserviceApplication {
 
 	 @Autowired
 	    filter filter;
-   @GetMapping("/auth/signup")
-   public String auth() {
-        return "Hello authentification";
-   }
+  
 	
    @Bean
 	public RouteLocator routes (RouteLocatorBuilder builder) {
 		return builder.routes()
-			.route(r -> r.path("trotti/auth/**").uri("lb://USER-SERVICE"))
+			.route(r -> r.path("/trotti/auth/**").uri("lb://USER-SERVICE"))
 			
-	     	 .route("balade-service", r -> r.path("trotti/balade/**")
+	     	 .route("balade-service", r -> r.path("/trotti/balade/**")
 	               .filters(f -> f.filter(filter))
 	               .uri("lb://BALADE-SERVICE"))
-	     	.route("trottinette-service", r -> r.path("trotti/trottinette/**")
+	     	.route("trottinette-service", r -> r.path("/trotti/trottinette/**")
 		               .filters(f -> f.filter(filter))
 		               .uri("lb://TROTTINETTE-SERVICE"))
-	     	.route("event-service", r -> r.path("trotti/event/**")
+	     	.route("event-service", r -> r.path("/trotti/event/**")
 		               .filters(f -> f.filter(filter))
 		               .uri("lb://EVENT-SERVICE"))
 	     	.route("location-service", r -> r.path("/trotti/locations/**")

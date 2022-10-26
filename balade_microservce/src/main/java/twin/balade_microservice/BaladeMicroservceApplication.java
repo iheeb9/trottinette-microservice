@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableFeignClients
 public class BaladeMicroservceApplication {
 
-    @GetMapping("/balade/test")
+    @GetMapping("/test")
     public String user_balade_test(@RequestHeader("id") String id,@RequestHeader("role") String role) {
      return "id:"+ id +"  role:"+role;
     }

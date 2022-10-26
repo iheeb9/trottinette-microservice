@@ -27,8 +27,8 @@ public class filter implements GatewayFilter{
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
        org.springframework.http.server.reactive.ServerHttpRequest request =exchange.getRequest();
-       System.out.println(request.getURI().getPath().contains("auth/signup"));
-      if(request.getURI().getPath().contains("auth/signup") || request.getURI().getPath().contains("auth/signin"))
+       System.out.println(request.getURI().getPath().contains("trotti/auth/signup"));
+      if(request.getURI().getPath().contains("trotti/auth/signup") || request.getURI().getPath().contains("auth/signin"))
     	  return chain.filter(exchange);
       else {
           if (this.isAuthMissing(request))
